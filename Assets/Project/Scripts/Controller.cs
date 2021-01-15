@@ -5,9 +5,13 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     public CharacterMovement charactermovement;
+    public CharacterAnimation characterAnimation;
+    public CharacterInput characterInput;
     
-    void FixedUpdate()
+    void Update()
     {
         charactermovement.MoveUpdate();
+        characterAnimation.AnimationUpdate();
+        characterInput.InputUpdate();
     }
 }

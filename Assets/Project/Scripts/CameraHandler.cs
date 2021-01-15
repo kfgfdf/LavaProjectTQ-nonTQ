@@ -13,20 +13,20 @@ public class CameraHandler : MonoBehaviour
 
     public float delta, mouseX, mouseY, smoothX, smoothY, smoothXVelocity, smoothYVelocity, lookAngle, titlAnge;
 
-    void FixedUpdate()
+    void Update()
     {
-        FixedTick();
+        Tick();
     }
 
-    void FixedTick()
+    void Tick()
     {
         delta = Time.deltaTime;
 
         HandlePosition();
         HandleRotation();
 
-        Vector3 targetPosiotion = Vector3.Lerp(mTransform.position, Character.position, 1);
-        mTransform.position = targetPosiotion;
+        Vector3 targetPosition = Vector3.Lerp(mTransform.position, Character.position, 1);
+        mTransform.position = targetPosition;
     }
 
     void HandlePosition()
@@ -74,7 +74,7 @@ public class CameraHandler : MonoBehaviour
             smoothY = mouseY;
         }
 
-        lookAngle += smoothY * cameraconfig.Y_rotSpeed;
+        lookAngle += smoothX * cameraconfig.Y_rotSpeed;
         Quaternion targetRot = Quaternion.Euler(0, lookAngle, 0);
         mTransform.rotation = targetRot;
 
