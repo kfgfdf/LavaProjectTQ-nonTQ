@@ -9,17 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70d2f7f9c0408f54b91f43e3dc9ddb2c, type: 3}
-  m_Name: Camera Config
+  m_Script: {fileID: 11500000, guid: adc206f2934ba7848a71232f31f57510, type: 3}
+  m_Name: AK74
   m_EditorClassIdentifier: 
-  turnSmooth: 0.1
-  pivotSpeed: 9
-  Y_rotSpeed: 7
-  X_rotSpeed: 7
-  minAngle: -45
-  maxAngle: 70
-  normalZ: -1.72
-  normalX: 0.4
-  aimZ: -1
-  aimX: 0.25
-  normalY: 1.5
+  rHandPos: {x: 0.167, y: -0.02, z: 0.155}
+  rHandRot: {x: -14, y: 8, z: -90}
+  weaponPrefab: {fileID: 3761414909431280436, guid: 6cadded429dd8ec43bf7d1a78768b4ea,
+    type: 3}

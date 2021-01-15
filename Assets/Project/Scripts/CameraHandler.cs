@@ -13,6 +13,8 @@ public class CameraHandler : MonoBehaviour
 
     public float delta, mouseX, mouseY, smoothX, smoothY, smoothXVelocity, smoothYVelocity, lookAngle, titlAnge;
 
+    public Transform targetLook;
+
     void Update()
     {
         Tick();
@@ -27,6 +29,20 @@ public class CameraHandler : MonoBehaviour
 
         Vector3 targetPosition = Vector3.Lerp(mTransform.position, Character.position, 1);
         mTransform.position = targetPosition;
+    }
+
+    void TargetLook()
+    {
+        Ray ray = new Ray(camTrans.position, camTrans.forward * 2000);
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit))
+        {
+            targetLook.position = Vector3.Lerp(targetLook.position, hit.point, Time.deltaTime * 40);
+        }
+        else
+        {
+            targetLook.position = Vector3.Lerp(targetLook.position, targetLook.transform.forward * 200, Time.deltaTime * 5);
+        }
     }
 
     void HandlePosition()
@@ -74,7 +90,7 @@ public class CameraHandler : MonoBehaviour
             smoothY = mouseY;
         }
 
-        lookAngle += smoothX * cameraconfig.Y_rotSpeed;
+        lookAngle += smoothX * cameraconfig.X_rotSpeed;
         Quaternion targetRot = Quaternion.Euler(0, lookAngle, 0);
         mTransform.rotation = targetRot;
 
