@@ -13,6 +13,8 @@ public class Weapon : MonoBehaviour
 
     public GameObject bullet;
 
+    public int Damage;
+
 
     void Update()
     {
@@ -33,10 +35,14 @@ public class Weapon : MonoBehaviour
             decal.transform.position = hit.point + hit.normal * 0.01f;
             decal.transform.rotation = Quaternion.LookRotation(-hit.normal);
         }
+
     }
+
 
     public void Shoot()
     {
-        Instantiate(bullet, shotPoint.position, shotPoint.rotation);
+        GameObject newBullet = Instantiate(bullet, shotPoint.position, shotPoint.rotation);
+        newBullet.GetComponent<Bullet>().damage = Damage;
+
     }
 }

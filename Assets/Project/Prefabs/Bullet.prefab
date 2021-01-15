@@ -106,5 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d0809b204bb97c4e8f4517600b4f81d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
+  Speed: 150
   decal: {fileID: 226100409662333526, guid: 3ae55c194e923bc4bbe4813816814788, type: 3}
+  damage: 0

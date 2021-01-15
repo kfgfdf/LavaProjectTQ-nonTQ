@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     private Vector3 lastPos;
     public GameObject decal;
 
+    public int damage;
+
     void Start()
     {
         lastPos = transform.position;
@@ -25,6 +27,7 @@ public class Bullet : MonoBehaviour
         {
             print(hit.transform.name);
 
+            Meat(hit);
             GameObject d = Instantiate<GameObject>(decal);
             d.transform.position = hit.point + hit.normal * 0.001f;
             d.transform.rotation = Quaternion.LookRotation(-hit.normal);
@@ -33,5 +36,13 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
         lastPos = transform.position;
+    }
+
+    public void Meat(RaycastHit hit)
+    {
+        if(hit.transform.GetComponent<HitPosition>() != null)
+        {
+            hit.transform.GetComponent<HitPosition>().Damage(damage);
+        }
     }
 }
