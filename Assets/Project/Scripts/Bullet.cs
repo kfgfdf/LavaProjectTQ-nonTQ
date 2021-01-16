@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
         {
             print(hit.transform.name);
 
-            Meat(hit);
+            
 
             string materialName = hit.collider.sharedMaterial.name;
             switch (materialName)
@@ -41,6 +41,7 @@ public class Bullet : MonoBehaviour
                     break;
                 case "Flesh":
                     SpawnDecal(hit, fleshHitEffect);
+                    Meat(hit);
                     break;
             }
             // GameObject d = Instantiate<GameObject>(decal);
