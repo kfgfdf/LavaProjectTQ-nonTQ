@@ -8,8 +8,6 @@ public class EnemyStat : MonoBehaviour
     public Rigidbody[] rigid;
     public int health;
 
-    //private bool isDead;
-
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -21,7 +19,6 @@ public class EnemyStat : MonoBehaviour
         if(health <= 0)
         {
             Dead();
-            //isDead = true;
         }
     }
 
@@ -33,12 +30,4 @@ public class EnemyStat : MonoBehaviour
         }
         anim.enabled = false;
     }
-
-    // public void ImpulseDead(RaycastHit hit)
-    // {
-    //     if(isDead)
-    //     {
-            
-    //     }
-    // }
 }

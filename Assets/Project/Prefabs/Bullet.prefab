@@ -108,4 +108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 150
   decal: {fileID: 226100409662333526, guid: 3ae55c194e923bc4bbe4813816814788, type: 3}
+  metalHitEffect: {fileID: 3790235560419080526, guid: 87c931dee27e99b41a40061928cd8898,
+    type: 3}
+  fleshHitEffect: {fileID: 8619569960831393272, guid: a83328d27c559e845a0cf07d39b83475,
+    type: 3}
   damage: 0

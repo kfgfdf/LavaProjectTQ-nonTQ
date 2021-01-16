@@ -13,6 +13,8 @@ public class Weapon : MonoBehaviour
 
     public GameObject bullet;
 
+    public ParticleSystem muzzleFlash;
+
     public int Damage;
 
 
@@ -29,12 +31,12 @@ public class Weapon : MonoBehaviour
         Debug.DrawLine(origin, dir, Color.black);
         Debug.DrawLine(cameraMain.transform.position, dir, Color.black);
 
-        if(Physics.Linecast(origin, dir, out hit))
-        {
-            //decal.SetActive(true);
-            decal.transform.position = hit.point + hit.normal * 0.01f;
-            decal.transform.rotation = Quaternion.LookRotation(-hit.normal);
-        }
+        // if(Physics.Linecast(origin, dir, out hit))
+        // {
+        //     //decal.SetActive(true);
+        //     decal.transform.position = hit.point + hit.normal * 0.01f;
+        //     decal.transform.rotation = Quaternion.LookRotation(-hit.normal);
+        // }
 
     }
 
@@ -43,6 +45,7 @@ public class Weapon : MonoBehaviour
     {
         GameObject newBullet = Instantiate(bullet, shotPoint.position, shotPoint.rotation);
         newBullet.GetComponent<Bullet>().damage = Damage;
+        muzzleFlash.Play();
 
     }
 }

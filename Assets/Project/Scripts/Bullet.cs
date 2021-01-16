@@ -8,11 +8,15 @@ public class Bullet : MonoBehaviour
     private Vector3 lastPos;
     public GameObject decal;
 
+    public GameObject metalHitEffect;
+    public GameObject fleshHitEffect;
+
     public int damage;
 
     void Start()
     {
         lastPos = transform.position;
+        Destroy(gameObject, 10);
     }
 
 
@@ -28,14 +32,32 @@ public class Bullet : MonoBehaviour
             print(hit.transform.name);
 
             Meat(hit);
-            GameObject d = Instantiate<GameObject>(decal);
-            d.transform.position = hit.point + hit.normal * 0.001f;
-            d.transform.rotation = Quaternion.LookRotation(-hit.normal);
-            Destroy(d, 10);
+
+            string materialName = hit.collider.sharedMaterial.name;
+            switch (materialName)
+            {
+                case "Metall":
+                    SpawnDecal(hit, metalHitEffect);
+                    break;
+                case "Flesh":
+                    SpawnDecal(hit, fleshHitEffect);
+                    break;
+            }
+            // GameObject d = Instantiate<GameObject>(decal);
+            // d.transform.position = hit.point + hit.normal * 0.001f;
+            // d.transform.rotation = Quaternion.LookRotation(-hit.normal);
+            // Destroy(d, 10);
 
             Destroy(gameObject);
         }
         lastPos = transform.position;
+    }
+
+    void SpawnDecal(RaycastHit hit, GameObject prefab)
+    {
+        GameObject spawnDecal = GameObject.Instantiate(prefab, hit.point, Quaternion.LookRotation(hit.normal));
+        spawnDecal.transform.SetParent(hit.collider.transform);
+        Destroy(spawnDecal.gameObject, 10);
     }
 
     public void Meat(RaycastHit hit)
